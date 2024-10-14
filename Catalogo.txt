@@ -15,7 +15,7 @@ Alien el ultimo pasajero, Ciencia Ficcion
 Hereditary, Terror
 Cartas a Julieta, Romance
 Dia de independencia, Ciencia Ficcion
-It, Terror 
+It, Terror
 Orgullo y Prejuicio, Romance
 El dia despues de mañana, Ciencia Ficcion
 La bruja, Terror
@@ -38,7 +38,7 @@ El fotografo, Terror
 Mamma mia, Romance
 Madre, Ciencia Ficcion
 Annabelle, Terror
-Mamma Mia, here we go again, Romance
+Mamma Mia here we go again, Romance
 Residen Evil, Ciencia Ficcion
 El niño, Terror
 Isi y Ossi, Romance
@@ -71,11 +71,10 @@ Chicas malas, Comedia
 A el no le gustas tanto, Romance
 George de la selva, Comedia
 Mujercitas, Romance
-Viernes de locos, Comedia
 La la land, Romance
 A todos los chicos de los que me enamore, Romance
 Mentiroso mentiroso, Comedia
-Siempre el mismo día, Romance
+Siempre el mismo dia, Romance
 Los Fockers, Comedia
 Como perder a un chico en 10 dias, Romance
 Locos por Mery, Comedia
@@ -89,64 +88,6 @@ Mi gran boda griega, Romance
 Click, Comedia
 Sin reservas, Romance
 Cuando la maldad acecha, Terror
-La casa del lago, Romance
-
-----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+La casa del lago, RomanceAmor en tiempos de colera,Romance
+Cenicienta,Romance
+Amor en tiempos de colera,Romance

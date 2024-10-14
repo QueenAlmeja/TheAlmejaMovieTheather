@@ -14,13 +14,19 @@ def greeting_menu():
     print("5. Salir")
 
 def buscar_pelicula():
-    nombre_de_pelicula = input("Escribe la película que quieres buscar en el catálogo: ").title()
+    nombre_de_pelicula = input("Escribe la película que quieres buscar en el catálogo: ").strip().lower()
     with open(ruta_del_catalogo, 'r') as archivo:
         for linea in archivo:
-            nombre, genero = linea.rstrip().split(',')
-            if nombre == nombre_de_pelicula:
-                print(f"Hemos encontrado la película 📽️ {nombre} en el 📖 catálogo y el género es: {genero}")
-                return  # Solo cuando se encuentra la película
+            linea = linea.strip()  
+            if linea == "":  
+                continue
+            partes = linea.split(',')
+            if len(partes) == 2:  
+                nombre, genero = partes
+                nombre = nombre.strip().lower() 
+                if nombre == nombre_de_pelicula: 
+                    print(f"🟢Hemos encontrado la película 📽️ {nombre.title()} en el 📖 catálogo y el género es: {genero}")
+                    return
     print("🥺😔 No hemos encontrado la película en el catálogo")
 
 def agregar_pelicula():
