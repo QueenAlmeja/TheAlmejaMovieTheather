@@ -1,120 +1,70 @@
-"""
-🔴Aqui estamos creando la logica del segundo archivo
-Podria intentar preguntarle al usuario que genero el interesa antes de buscar
-"""
-
-# catalogo.py
-from pelicula import Pelicula 
+from pelicula import Pelicula
 import os
 
-class CatalogoPeliculas:
-    def __init__(self, ruta):
-        self.ruta = ruta
+ruta_del_catalogo = "C:/Users/Alejandra Sanchez/Desktop/ADA_Proyecto2/Catalogo.txt"
 
-#Se crearon las funciones que permiten buscar, listar, organizar y elminar peliculas 
-#Primera funcion
-    def buscar_pelicula(self, nombre, genero):
-        if os.path.exists(self.ruta):
-            with open(self.ruta, 'r') as archivo:
-                peliculas = archivo.readlines()
-                #aqui deberia una linea con el nombre de la pelicula, genero 
-                for pelicula in peliculas:
-                    #if pelicula.strip().lower() == nombre.lower():
-                    #debo intentar cambiar la linea anterior
-                        return True
-        return False
-#Segunda funcion
-    def agregar_pelicula(self, pelicula):
-        with open(self.ruta, 'a') as archivo:
-            archivo.write(f"{pelicula.obtener_nombre()}, {pelicula.genero} + '\n")
-#Tercera funcion
-    def listar_peliculas(self):
-        if os.path.exists(self.ruta):
-            with open(self.ruta, 'r') as archivo:
-                peliculas = archivo.readlines()
-                return [p.strip() for p in peliculas]
-        return []
-#Cuarta funcion 
-    def organizar_peliculas(self):
-        peliculas = self.listar_peliculas()
-        peliculas.sort()
-        with open(self.ruta, 'w') as archivo:
-            for pelicula in peliculas:
-                archivo.write(pelicula + '\n')
-#Quinta funcion
-    def eliminar_catalogo(self):
-        if os.path.exists(self.ruta):
-            os.remove(self.ruta)
-
-#Creamos una logica que muestre el menu de opciones 
-def mostrar_menu():
-    print("Menú del catálogo de películas:")
+def greeting_menu():
+    print("Bienvenido a 👑 The Almeja Movie Theater 🎬")
+    print("🛑 Este es un programa básico, así que te recomendamos escribir el nombre de tu película sin usar tildes o comillas\n")
+    print("Dinos, ¿qué desea hacer?: \n")
     print("1. Buscar una película")
-    print("2. Agregar una película")
+    print("2. Agregar una película al catálogo")
     print("3. Organizar todas las películas")
-    print("4. Eliminar el catálogo actual para crear uno nuevo")
+    print("4. Eliminar el catálogo y crear uno nuevo")
     print("5. Salir")
 
-"""
-Si el usuario elige la opcion 1, quiero mostrar un nuevo menu donde le pregunto si
-desea buscar la pelicula por genero y le muestro la lista de generos
+def buscar_pelicula():
+    nombre_de_pelicula = input("Escribe la película que quieres buscar en el catálogo: ").title()
+    with open(ruta_del_catalogo, 'r') as archivo:
+        for linea in archivo:
+            nombre, genero = linea.rstrip().split(',')
+            if nombre == nombre_de_pelicula:
+                print(f"Hemos encontrado la película 📽️ {nombre} en el 📖 catálogo y el género es: {genero}")
+                return  # Solo cuando se encuentra la película
+    print("🥺😔 No hemos encontrado la película en el catálogo")
 
-💡 Debo crear una nueva funcion que puede ser de la siguiente manera
+def agregar_pelicula():
+    nombre = input("Dinos el nombre de la película que quieres agregar: ")
+    genero = input("Ingresa el género de la película que escribiste: ")
+    pelicula_agregada = Pelicula(nombre, genero)
+    
+    with open(ruta_del_catalogo, 'a') as archivo:
+        archivo.write(f"{pelicula_agregada.obtener_nombre()},{pelicula_agregada.genero}\n")
+    print("Has agregado una nueva película al catálogo")
 
-def genero_pelicula(): 
-    question = input = ("Quisieras buscar la pelicula por genero?").capitalize()
-        if question = "Si"
-            print("Bien, los generos que tenemos son los siguientes:")
-            print("Romance, Terror, Ciencia Ficcion, Comedia)
-            
-            opciones = input("Escribe la opcion que mas te interesa: ").capitalize()
-            genero = ["Romance", "Ciencia Ficcion", "Comedia","Terror"]
-                if opciones in genero:
-                    print(f"Buscando peliculas de genero: {opciones}")
-                    #aqui falta logica, emplear el return y get 
-        elif question = "No"
-            print("Dejaremos que busques el catalogo escribiendo el nombre de la peliculo")
-            
-"""
+def organizar_pelicula():
+    with open(ruta_del_catalogo, 'r') as archivo:
+        peliculas = archivo.readlines()
+        
+    peliculas.sort()
 
+    with open(ruta_del_catalogo, 'w') as archivo:
+        archivo.writelines(peliculas) 
+    
+    print("Has organizado la lista de películas")
 
-def ejecutar_programa():
-    catalogo = CatalogoPeliculas("C:/Users/Alejandra Sanchez/Desktop/ADA_Proyecto2/Catalogo.txt")
-#aqui, dentro del ciclo while se encuentra la logica que viene despues de preguntar el genero, pero debo mejorarlo
-#No logro que esto funciones 😭😭😭😭😭
-    while True:
-        mostrar_menu()
-        opcion = input("Selecciona una opción: ")
+def eliminar():
+    if os.path.exists(ruta_del_catalogo):
+        os.remove(ruta_del_catalogo)
+        print("Has eliminado el catálogo")
+        print("Espero que no te arrepientas de esta decisión")
+    else:
+        print("Es probable que alguien ya haya eliminado el catálogo de pelis, así que debes crear uno desde cero")
 
-        if opcion == '1':
-            nombre = input("Introduce el nombre de la película que deseas buscar: ")
-            if catalogo.buscar_pelicula(nombre):
-                print(f"La película '{nombre}' está en el catálogo.")
-            else:
-                print(f"La película '{nombre}' no se encontró en el catálogo.")
-
-        elif opcion == '2':
-            nombre = input("Introduce el nombre de la película que deseas agregar: ")
-            nueva_pelicula = Pelicula(nombre)
-            catalogo.agregar_pelicula(nueva_pelicula)
-            print(f"La película '{nombre}' ha sido agregada.")
-
-        elif opcion == '3':
-            catalogo.organizar_peliculas()
-            print("El catálogo ha sido organizado alfabéticamente.")
-
-        elif opcion == '4':
-            confirmacion = input("¿Estás seguro de que deseas eliminar el catálogo? (s/n): ")
-            if confirmacion.lower() == 's':
-                catalogo.eliminar_catalogo()
-                print("El catálogo ha sido eliminado.")
-
-        elif opcion == '5':
-            print("Saliendo del programa.")
-            break
-
-        else:
-            print("Opción no válida, intenta de nuevo.")
-
-if __name__ == "__main__":
-    ejecutar_programa()
+opcio_user = ""
+while opcio_user != "5":
+    greeting_menu()
+    opcio_user = input("Escribe el número de la opción que quieres ejecutar para continuar con el programa: ")
+    
+    if opcio_user == "1":
+        buscar_pelicula()
+    elif opcio_user == "2":
+        agregar_pelicula()
+    elif opcio_user == "3":
+        organizar_pelicula()
+    elif opcio_user == "4":
+        eliminar()
+    elif opcio_user == "5":
+        print("Has salido de tu cinemateca favorita, nos vemos en otra oportunidad 👋")
+    else:
+        print("⚠️ Tu opción no está en el menú. Por favor, elige una de las opciones indicadas anteriormente")
