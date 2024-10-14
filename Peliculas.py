@@ -1,3 +1,5 @@
+#Este archivo no posee comentarios que explique cada uno de las funciones y métodos empleados
+#En este archivo se encuentra contenida la lógica que permite correr el programa para que el usuario pueda buscar, añadir, enlistar o eliminar películas 
 from pelicula import Pelicula
 import os
 
