@@ -1,3 +1,4 @@
+#Los archivos no tendran comentarios explicativos y se trataron de simplificar lo mejor posible la declaracion de funciones
 class Pelicula:
     def __init__(self, nombre, genero):
         self.__nombre = nombre
