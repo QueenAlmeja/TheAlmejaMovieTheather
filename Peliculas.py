@@ -7,10 +7,10 @@ def greeting_menu():
     print("Bienvenido a 👑 The Almeja Movie Theater 🎬")
     print("🛑 Este es un programa básico, así que te recomendamos escribir el nombre de tu película sin usar tildes o comillas\n")
     print("Dinos, ¿qué desea hacer?: \n")
-    print("1. Buscar una película")
-    print("2. Agregar una película al catálogo")
-    print("3. Organizar todas las películas")
-    print("4. Eliminar el catálogo y crear uno nuevo")
+    print("1. Buscar una película\n")
+    print("2. Agregar una película al catálogo\n")
+    print("3. Organizar todas las películas\n")
+    print("4. Eliminar el catálogo y crear uno nuevo\n")
     print("5. Salir")
 
 def buscar_pelicula():
